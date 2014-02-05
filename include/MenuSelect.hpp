@@ -17,11 +17,14 @@ public:
     _text.setFont(_font);
     _text.setCharacterSize(sizeFont);
     _text.setPosition(pos);
+    _select = false;
   }
   ~MenuSelect()
   {
 
   }
+
+  void	setSelect(bool set) {_select = set;}
 
   void	draw()
   {
@@ -32,6 +35,7 @@ private:
   void (T::* _action)(void);
   sf::Font	_font;
   sf::Text	_text;
+  bool		_select;
 };
 
 #endif

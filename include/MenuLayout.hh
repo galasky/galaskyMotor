@@ -1,8 +1,10 @@
 #ifndef	__MENULAYOUT_HH__
 #define	__MENULAYOUT_HH__
 
+#include <list>
 #include "ILayout.hh"
 #include "MenuSelect.hpp"
+#include "MenuNav.hh"
 
 class	MenuLayout : public ILayout
 {
@@ -13,7 +15,7 @@ public:
   void		nothing();
   virtual void	draw();
 private:
-  MenuSelect<MenuLayout>	_start;
+  MenuNav<MenuLayout>	_menu;
 };
 
 #endif
