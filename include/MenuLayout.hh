@@ -14,6 +14,12 @@ public:
 
   void		nothing();
   virtual void	draw();
+  virtual void	down();
+  virtual void	up();
+  virtual void	enter();
+  virtual void	mouseMoved();
+  void		createGame();
+
 private:
   MenuNav<MenuLayout>	_menu;
 };

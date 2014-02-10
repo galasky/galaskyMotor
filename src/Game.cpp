@@ -3,9 +3,14 @@
 #include "Player.hh"
 
 Game::Game()
-  : _button(this)
+  : _buttonGame(this),
+    _buttonScreen(&_screen)
 {
-  _button.addPressed(sf::Keyboard::Escape, &Game::close);
+  _buttonGame.addPressed(sf::Keyboard::Escape, &Game::close);
+
+  _buttonScreen.addReleased(sf::Keyboard::Down, &Screen::down);
+  _buttonScreen.addReleased(sf::Keyboard::Up, &Screen::up);
+  _buttonScreen.addReleased(sf::Keyboard::Return, &Screen::enter);
 }
 
 Game::~Game()
@@ -32,8 +37,13 @@ Game::catch_event()
 {
   while (Window::instance().pollEvent(Event::instance()))
     {
-      _button.catch_event();
-    }  
+      _buttonGame.catch_event();
+      _buttonScreen.catch_event();
+      if (Event::instance().type == sf::Event::MouseMoved)
+	{
+	  _screen.mouseMoved();
+	}
+    }
 }
 
 void

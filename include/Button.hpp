@@ -5,7 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include "Window.hpp"
 #include "Event.hpp"
-#include <iostream>
 
 template <typename T>
 class	Button
@@ -20,7 +19,6 @@ public:
 
   void	addPressed(sf::Keyboard::Key key,  void (T::* action)(void))
   {
-    std::cout << key << std::endl;
     _actionPressed[key] = action;
   }
   void	addReleased(sf::Keyboard::Key key,  void (T::* action)(void))

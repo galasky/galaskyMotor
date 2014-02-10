@@ -11,6 +11,11 @@ public:
   ~Screen();
 
   void		draw();
+  void		down();
+  void		up();
+  void		enter();
+  void		mouseMoved();
+
 private:
   ILayout	*_layout;
   Sprite	_background;

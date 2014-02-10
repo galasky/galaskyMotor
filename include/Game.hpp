@@ -9,7 +9,7 @@
 class	Game
 {
 public:
-  static Game &instance();
+  static Game		&instance();
 
   void	close();
   void	run();
@@ -17,9 +17,10 @@ private:
   Game();
   ~Game();
 
-  void		catch_event();
-  Screen	_screen;
-  Button<Game>	_button;
+  void			catch_event();
+  Screen		_screen;
+  Button<Game>		_buttonGame;
+  Button<Screen>	_buttonScreen;
 };
 
 #endif
