@@ -2,7 +2,9 @@
 #define	__MENUNAV_HH__
 
 #include <list>
+//#include <SFML/Audio.hpp>
 #include "MenuSelect.hpp"
+//#include "SoundManager.hpp"
 
 template <typename T>
 class	MenuNav
@@ -10,7 +12,6 @@ class	MenuNav
 public:
   MenuNav()
   {
-
   }
   ~MenuNav()
   {

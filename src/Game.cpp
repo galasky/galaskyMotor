@@ -1,6 +1,8 @@
 #include "Game.hpp"
 #include "Window.hpp"
 #include "Player.hh"
+#include "SoundManager.hpp"
+
 
 Game::Game()
   : _buttonGame(this),
@@ -11,6 +13,8 @@ Game::Game()
   _buttonScreen.addReleased(sf::Keyboard::Down, &Screen::down);
   _buttonScreen.addReleased(sf::Keyboard::Up, &Screen::up);
   _buttonScreen.addReleased(sf::Keyboard::Return, &Screen::enter);
+
+  //SoundManager::instance().load("assets/sounds/select.ogg");
 }
 
 Game::~Game()

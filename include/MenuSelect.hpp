@@ -2,8 +2,10 @@
 #define	__MENUSELECT_HPP__
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Window.hpp"
 #include "Event.hpp"
+#include "SoundManager.hpp"
 
 template <typename T>
 class	MenuSelect
@@ -23,6 +25,8 @@ public:
     _selected = sf::Color(202, 202, 0);
     _text.setColor(_unselected);
     _select = false;
+    SoundManager::instance().load("assets/sounds/select.ogg");
+    _sound.setBuffer(SoundManager::instance().getBuffer("assets/sounds/select.ogg"));
   }
   ~MenuSelect()
   {
@@ -32,7 +36,10 @@ public:
   void	setSelect(bool set)
   {
     if (set == true)
-      _text.setColor(_selected);
+      {
+	_sound.play();
+	_text.setColor(_selected);
+      }
     else
       _text.setColor(_unselected);
     _select = set;
@@ -40,6 +47,8 @@ public:
 
   bool	testMouse()
   {
+    if (_select == true)
+      return false;
     if (Event::instance().mouseMove.y >= _text.getPosition().y && Event::instance().mouseMove.y <= _text.getPosition().y + _sizeFont
 	&& Event::instance().mouseMove.x >= _text.getPosition().x && Event::instance().mouseMove.x <= _text.findCharacterPos(_text.getString().getSize()).x)
       return true;
@@ -59,6 +68,8 @@ private:
   sf::Color	_selected;
   bool		_select;
   int		_sizeFont;
+  sf::SoundBuffer _buff;
+  sf::Sound	_sound;
 };
 
 #endif
