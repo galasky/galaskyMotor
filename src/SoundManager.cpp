@@ -1,5 +1,4 @@
 #include "SoundManager.hpp"
-#include <iostream>
 
 SoundManager::SoundManager()
 {
@@ -34,6 +33,5 @@ SoundManager::load(const std::string &sound)
 sf::SoundBuffer &
 SoundManager::getBuffer(const std::string &sound)
 {
-  std::cout << &_buffer[sound] << std::endl;
   return _buffer[sound];
 }

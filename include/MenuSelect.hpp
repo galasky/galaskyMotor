@@ -6,21 +6,23 @@
 #include "Window.hpp"
 #include "Event.hpp"
 #include "SoundManager.hpp"
+#include "Screen.hh"
 
 template <typename T>
 class	MenuSelect
 {
 public:
-  MenuSelect(T *ptr, void (T::* action)(void), const sf::String &txt, const sf::Vector2f &pos = sf::Vector2f(0, 0), int sizeFont = 5)
+  MenuSelect(T *ptr, void (T::* action)(const std::string &), const sButton &widget)
   {
     _ptr = ptr;
+    _link = widget.onClick;
     _action = action;
-    _sizeFont = sizeFont;
+    _sizeFont = widget.fontSize;
     _font.loadFromFile("assets/fonts/college.ttf");
-    _text.setString(txt);
+    _text.setString(widget.text);
     _text.setFont(_font);
-    _text.setCharacterSize(sizeFont);
-    _text.setPosition(pos);
+    _text.setCharacterSize(_sizeFont);
+    _text.setPosition(widget.x, widget.y);
     _unselected = sf::Color(12, 182, 0);
     _selected = sf::Color(202, 202, 0);
     _text.setColor(_unselected);
@@ -45,6 +47,11 @@ public:
     _select = set;
   }
 
+  void	enter()
+  {
+    (_ptr->*_action)(_link);
+  }
+
   bool	testMouse()
   {
     if (_select == true)
@@ -61,11 +68,12 @@ public:
   }
 private:
   T		*_ptr;
-  void (T::* _action)(void);
+  void (T::* _action)(const std::string &);
   sf::Font	_font;
   sf::Text	_text;
   sf::Color	_unselected;
   sf::Color	_selected;
+  std::string	_link;
   bool		_select;
   int		_sizeFont;
   sf::SoundBuffer _buff;

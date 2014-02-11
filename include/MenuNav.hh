@@ -44,7 +44,7 @@ public:
 
   void	enter()
   {
-
+    (*_selected)->enter();
   }
 
   void	mouseMoved()

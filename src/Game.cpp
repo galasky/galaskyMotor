@@ -13,8 +13,6 @@ Game::Game()
   _buttonScreen.addReleased(sf::Keyboard::Down, &Screen::down);
   _buttonScreen.addReleased(sf::Keyboard::Up, &Screen::up);
   _buttonScreen.addReleased(sf::Keyboard::Return, &Screen::enter);
-
-  //SoundManager::instance().load("assets/sounds/select.ogg");
 }
 
 Game::~Game()

@@ -5,11 +5,14 @@
 #include "ILayout.hh"
 #include "MenuSelect.hpp"
 #include "MenuNav.hh"
+#include "Screen.hh"
+
+class	Screen;
 
 class	MenuLayout : public ILayout
 {
 public:
-  MenuLayout();
+  MenuLayout(Screen *, const Layout &);
   ~MenuLayout();
 
   void		nothing();
@@ -18,10 +21,10 @@ public:
   virtual void	up();
   virtual void	enter();
   virtual void	mouseMoved();
-  void		createGame();
 
 private:
-  MenuNav<MenuLayout>	_menu;
+  MenuNav<Screen>	_menu;
+  Screen		*_screen;
 };
 
 #endif

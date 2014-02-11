@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Menu>
+    <Layout
+	name="Home"
+	background="fepfle.png">
+      <Button
+	  x="100"
+	  y="300"
+	  fontSize="100"
+	  onClick="toto"
+	  text="tutu">
+      </Button>
+      <Button
+	  x="100"
+	  y="400"
+	  fontSize="100"
+	  onClick=""
+	  text="exit">
+      </Button>
+    </Layout>
+    <Layout
+	name="toto"
+	background="fepfle.png">
+      <Button
+	  x="100"
+	  y="300"
+	  fontSize="100"
+	  onClick="Home"
+	  text="tata">
+      </Button>
+    </Layout>
+</Menu>

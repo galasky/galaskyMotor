@@ -1,10 +1,13 @@
 #include "MenuLayout.hh"
+#include "Screen.hh"
 
-MenuLayout::MenuLayout()
+MenuLayout::MenuLayout(Screen *screen, const Layout &layout)
+  : _screen(screen)
 {
-  _menu.push_back(new MenuSelect<MenuLayout>(this, &MenuLayout::createGame, "Create game", sf::Vector2f(100, 300), 100));
-  _menu.push_back(new MenuSelect<MenuLayout>(this, &MenuLayout::nothing, "Menu", sf::Vector2f(100, 400), 100));
-  _menu.push_back(new MenuSelect<MenuLayout>(this, &MenuLayout::nothing, "Option", sf::Vector2f(100, 500), 100));
+  for (std::list<sButton>::const_iterator it = layout.buttons.begin(); it != layout.buttons.end(); it++)
+    {
+      _menu.push_back(new MenuSelect<Screen>(_screen, &Screen::toLayout, *it));
+    }
 }
 
 MenuLayout::~MenuLayout()
@@ -33,12 +36,6 @@ void
 MenuLayout::enter()
 {
   _menu.enter();
-}
-
-void
-MenuLayout::createGame()
-{
-  
 }
 
 void
