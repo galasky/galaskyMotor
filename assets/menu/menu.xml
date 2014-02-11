@@ -2,31 +2,54 @@
 <Menu>
     <Layout
 	name="Home"
-	background="fepfle.png">
+	background="assets/textures/background.jpg">
       <Button
 	  x="100"
 	  y="300"
 	  fontSize="100"
+	  font="assets/fonts/college.ttf"
 	  onClick="toto"
-	  text="tutu">
+	  text="coriolan">
       </Button>
       <Button
 	  x="100"
 	  y="400"
 	  fontSize="100"
-	  onClick=""
+	  font="assets/fonts/college.ttf"
+	  onClick="finish"
 	  text="exit">
       </Button>
     </Layout>
     <Layout
 	name="toto"
-	background="fepfle.png">
+	background="assets/textures/background2.jpg">
       <Button
 	  x="100"
 	  y="300"
 	  fontSize="100"
+	  font="assets/fonts/college.ttf"
+	  onClick="titi"
+	  text="Next">
+      </Button>
+      <Button
+	  x="100"
+	  y="400"
+	  fontSize="100"
+	  font="assets/fonts/college.ttf"
 	  onClick="Home"
-	  text="tata">
+	  text="Back">
+      </Button>
+    </Layout>
+    <Layout
+	name="titi"
+	background="assets/textures/background2.jpg">
+      <Button
+	  x="100"
+	  y="300"
+	  fontSize="100"
+	  font="assets/fonts/college.ttf"
+	  onClick="toto"
+	  text="Back">
       </Button>
     </Layout>
 </Menu>

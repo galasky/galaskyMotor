@@ -18,7 +18,7 @@ public:
     _link = widget.onClick;
     _action = action;
     _sizeFont = widget.fontSize;
-    _font.loadFromFile("assets/fonts/college.ttf");
+    _font.loadFromFile(widget.font);
     _text.setString(widget.text);
     _text.setFont(_font);
     _text.setCharacterSize(_sizeFont);
@@ -58,6 +58,14 @@ public:
       return false;
     if (Event::instance().mouseMove.y >= _text.getPosition().y && Event::instance().mouseMove.y <= _text.getPosition().y + _sizeFont
 	&& Event::instance().mouseMove.x >= _text.getPosition().x && Event::instance().mouseMove.x <= _text.findCharacterPos(_text.getString().getSize()).x)
+      return true;
+    return false;
+  }
+
+  bool	testClick()
+  {
+    if (Event::instance().mouseButton.y >= _text.getPosition().y && Event::instance().mouseButton.y <= _text.getPosition().y + _sizeFont
+	&& Event::instance().mouseButton.x >= _text.getPosition().x && Event::instance().mouseButton.x <= _text.findCharacterPos(_text.getString().getSize()).x)
       return true;
     return false;
   }

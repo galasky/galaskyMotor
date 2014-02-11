@@ -58,6 +58,15 @@ public:
 	}
   }
 
+  void	click()
+  {
+    for (typename std::list<MenuSelect<T> *>::iterator it = _nav.begin(); it != _nav.end(); it++)
+      if ((*it)->testClick() == true)
+	{
+	  this->enter();
+	}
+  }
+
   void	push_back(MenuSelect<T> *add)
   {
     _nav.push_back(add);

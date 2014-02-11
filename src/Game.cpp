@@ -8,11 +8,13 @@ Game::Game()
   : _buttonGame(this),
     _buttonScreen(&_screen)
 {
-  _buttonGame.addPressed(sf::Keyboard::Escape, &Game::close);
+  //  _buttonGame.addPressed(sf::Keyboard::Escape, &Game::close);
 
-  _buttonScreen.addReleased(sf::Keyboard::Down, &Screen::down);
-  _buttonScreen.addReleased(sf::Keyboard::Up, &Screen::up);
+  _buttonScreen.addPressed(sf::Keyboard::Down, &Screen::down);
+  _buttonScreen.addPressed(sf::Keyboard::Up, &Screen::up);
   _buttonScreen.addReleased(sf::Keyboard::Return, &Screen::enter);
+  _buttonScreen.addReleased(sf::Keyboard::Space, &Screen::enter);
+  //  _buttonScreen.addReleased(sf::Keyboard::Escape, &Screen::back);
 }
 
 Game::~Game()
@@ -44,6 +46,13 @@ Game::catch_event()
       if (Event::instance().type == sf::Event::MouseMoved)
 	{
 	  _screen.mouseMoved();
+	}
+      else if (Event::instance().type == sf::Event::MouseButtonReleased)
+	{
+	  if (Event::instance().mouseButton.button == sf::Mouse::Left)
+	    {
+	      _screen.click();
+	    }
 	}
     }
 }

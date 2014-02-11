@@ -2,7 +2,8 @@
 #include "Screen.hh"
 
 MenuLayout::MenuLayout(Screen *screen, const Layout &layout)
-  : _screen(screen)
+  : _screen(screen),
+    _background(layout.background)
 {
   for (std::list<sButton>::const_iterator it = layout.buttons.begin(); it != layout.buttons.end(); it++)
     {
@@ -45,7 +46,14 @@ MenuLayout::mouseMoved()
 }
 
 void
+MenuLayout::click()
+{
+  _menu.click();
+}
+
+void
 MenuLayout::draw()
 {
+  _background.draw();
   _menu.draw();
 }

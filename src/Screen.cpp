@@ -5,7 +5,6 @@
 #include "MenuLayout.hh"
 
 Screen::Screen()
-  : _background("assets/textures/background.jpg")
 {
   this->loadXmlFile();
 }
@@ -46,6 +45,7 @@ Screen::loadXmlFile()
 			  if (v3.first == "<xmlattr>")
 			    {
 			      b.onClick = v3.second.get<std::string>("onClick");
+			      b.font = v3.second.get<std::string>("font");
 			      b.text = v3.second.get<std::string>("text");
 			      b.x = v3.second.get<int>("x");
 			      b.y = v3.second.get<int>("y");
@@ -87,8 +87,12 @@ Screen::enter()
 void
 Screen::toLayout(const std::string &layout)
 {
+  if (layout == "finish")
+    Window::instance().close();
   if (_layout.find(layout) != _layout.end())
-    _itLayout = _layout.find(layout);
+    {
+      _itLayout = _layout.find(layout);
+    }
   else
     std::cout << "Layout " << layout << " doesn't exist" << std::endl;
 }
@@ -100,8 +104,13 @@ Screen::mouseMoved()
 }
 
 void
+Screen::click()
+{
+  _itLayout->second->click();
+}
+
+void
 Screen::draw()
 {
-  _background.draw();
   _itLayout->second->draw();
 }

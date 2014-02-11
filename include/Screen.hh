@@ -11,11 +11,12 @@
 
 typedef boost::gregorian::date Date;
 
-class sButton : public Widget
+class sButton
 {
 public:
   std::string	onClick;
   std::string	text;
+  std::string	font;
   int		x;
   int		y;
   int		fontSize;
@@ -41,11 +42,11 @@ public:
   void						enter();
   void						toLayout(const std::string &);
   void						mouseMoved();
+  void						click();
 
 private:
   std::map<std::string, ILayout *>		_layout;
   std::map<std::string, ILayout *>::iterator	_itLayout;
-  Sprite					_background;
 };
 
 #endif

@@ -21,10 +21,12 @@ public:
   virtual void	up();
   virtual void	enter();
   virtual void	mouseMoved();
+  virtual void	click();
 
 private:
   MenuNav<Screen>	_menu;
   Screen		*_screen;
+  Sprite		_background;
 };
 
 #endif
