@@ -12,6 +12,7 @@ public:
   virtual void	enter() = 0;
   virtual void	mouseMoved() = 0;
   virtual void	click() = 0;
+  virtual void	text() = 0;
 private:
 };
 

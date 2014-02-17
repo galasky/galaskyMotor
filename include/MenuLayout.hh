@@ -12,7 +12,7 @@ class	Screen;
 class	MenuLayout : public ILayout
 {
 public:
-  MenuLayout(Screen *, const Layout &);
+  MenuLayout(Screen *, Layout &);
   ~MenuLayout();
 
   void		nothing();
@@ -22,6 +22,7 @@ public:
   virtual void	enter();
   virtual void	mouseMoved();
   virtual void	click();
+  virtual void	text();
 
 private:
   MenuNav<Screen>	_menu;

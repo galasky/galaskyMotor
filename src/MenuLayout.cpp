@@ -1,11 +1,20 @@
 #include "MenuLayout.hh"
 #include "Screen.hh"
 
-MenuLayout::MenuLayout(Screen *screen, const Layout &layout)
-  : _screen(screen),
+MenuLayout::MenuLayout(Screen *screen, Layout &layout)
+  : _menu(layout.soundButton),
+    _screen(screen),
     _background(layout.background)
 {
   for (std::list<sButton>::const_iterator it = layout.buttons.begin(); it != layout.buttons.end(); it++)
+    {
+      _menu.push_back(new MenuSelect<Screen>(_screen, &Screen::toLayout, *it));
+    }
+  for (std::list<EditText *>::iterator it = layout.edit_text.begin(); it != layout.edit_text.end(); it++)
+    {
+      _menu.push_back(*it);
+    }
+  for (std::list<sButton>::const_iterator it = layout.save.begin(); it != layout.save.end(); it++)
     {
       _menu.push_back(new MenuSelect<Screen>(_screen, &Screen::toLayout, *it));
     }
@@ -49,6 +58,12 @@ void
 MenuLayout::click()
 {
   _menu.click();
+}
+
+void
+MenuLayout::text()
+{
+  _menu.text();
 }
 
 void

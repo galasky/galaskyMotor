@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Menu>
+<Menu
+    music="assets/sounds/music.flac">
     <Layout
 	name="Home"
+	soundButton="assets/sounds/select.ogg"
 	background="assets/textures/background.jpg">
       <Button
 	  x="100"
 	  y="300"
 	  fontSize="100"
 	  font="assets/fonts/college.ttf"
-	  onClick="toto"
-	  text="coriolan">
+	  onClick="Home"
+	  text="Play">
       </Button>
       <Button
 	  x="100"
 	  y="400"
+	  fontSize="100"
+	  font="assets/fonts/college.ttf"
+	  onClick="Option"
+	  text="Option">
+      </Button>
+      <Button
+	  x="100"
+	  y="500"
 	  fontSize="100"
 	  font="assets/fonts/college.ttf"
 	  onClick="finish"
@@ -21,35 +31,41 @@
       </Button>
     </Layout>
     <Layout
-	name="toto"
-	background="assets/textures/background2.jpg">
-      <Button
+	name="Option"
+	soundButton="assets/sounds/select.ogg"
+	background="assets/textures/background.jpg">
+      <EditText
 	  x="100"
-	  y="300"
-	  fontSize="100"
+          y="300"
+	  fontSize="50"
 	  font="assets/fonts/college.ttf"
-	  onClick="titi"
-	  text="Next">
-      </Button>
+	  text="Pseudo">
+      </EditText>
+      <EditText
+	  x="100"
+          y="350"
+	  fontSize="50"
+	  font="assets/fonts/college.ttf"
+	  text="Port">
+      </EditText>
+
+      <Save
+	  x="100"
+          y="800"
+	  fontSize="50"
+	  inFile="assets/config/conf.ini"
+	  onClick="Home"
+	  font="assets/fonts/college.ttf"
+	  text="save">
+      </Save>
+
       <Button
 	  x="100"
-	  y="400"
-	  fontSize="100"
+	  y="860"
+	  fontSize="50"
 	  font="assets/fonts/college.ttf"
 	  onClick="Home"
-	  text="Back">
-      </Button>
-    </Layout>
-    <Layout
-	name="titi"
-	background="assets/textures/background2.jpg">
-      <Button
-	  x="100"
-	  y="300"
-	  fontSize="100"
-	  font="assets/fonts/college.ttf"
-	  onClick="toto"
-	  text="Back">
+	  text="retour">
       </Button>
     </Layout>
 </Menu>

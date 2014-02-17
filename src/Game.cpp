@@ -3,11 +3,11 @@
 #include "Player.hh"
 #include "SoundManager.hpp"
 
-
 Game::Game()
   : _buttonGame(this),
     _buttonScreen(&_screen)
 {
+  _screen.loadXmlFile("assets/menu/menu.xml");
   //  _buttonGame.addPressed(sf::Keyboard::Escape, &Game::close);
 
   _buttonScreen.addPressed(sf::Keyboard::Down, &Screen::down);
@@ -53,6 +53,11 @@ Game::catch_event()
 	    {
 	      _screen.click();
 	    }
+	}
+      else if (Event::instance().type == sf::Event::TextEntered)
+	{
+	  if (Event::instance().text.unicode < 128)
+	    _screen.text();
 	}
     }
 }

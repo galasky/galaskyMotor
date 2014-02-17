@@ -2,10 +2,8 @@
 #define	__MENUSELECT_HPP__
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include "Window.hpp"
 #include "Event.hpp"
-#include "SoundManager.hpp"
 #include "Screen.hh"
 
 template <typename T>
@@ -14,6 +12,7 @@ class	MenuSelect
 public:
   MenuSelect(T *ptr, void (T::* action)(const std::string &), const sButton &widget)
   {
+    _inFile = widget.inFile;
     _ptr = ptr;
     _link = widget.onClick;
     _action = action;
@@ -27,8 +26,6 @@ public:
     _selected = sf::Color(202, 202, 0);
     _text.setColor(_unselected);
     _select = false;
-    SoundManager::instance().load("assets/sounds/select.ogg");
-    _sound.setBuffer(SoundManager::instance().getBuffer("assets/sounds/select.ogg"));
   }
   ~MenuSelect()
   {
@@ -38,13 +35,22 @@ public:
   void	setSelect(bool set)
   {
     if (set == true)
-      {
-	_sound.play();
-	_text.setColor(_selected);
-      }
+      _text.setColor(_selected);
     else
       _text.setColor(_unselected);
     _select = set;
+  }
+
+  bool	isSave()
+  {
+    if (_inFile == "")
+      return false;
+    return true;
+  }
+
+  std::string	getInFile()
+  {
+    return (_inFile);
   }
 
   void	enter()
@@ -82,10 +88,9 @@ private:
   sf::Color	_unselected;
   sf::Color	_selected;
   std::string	_link;
+  std::string	_inFile;
   bool		_select;
   int		_sizeFont;
-  sf::SoundBuffer _buff;
-  sf::Sound	_sound;
 };
 
 #endif
